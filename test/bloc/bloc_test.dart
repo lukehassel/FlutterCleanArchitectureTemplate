@@ -3,7 +3,7 @@ import 'package:clean_architecture_template/core/network/connectivity/connectivi
 import 'package:clean_architecture_template/core/network/connectivity/connectivity_info_impl.dart';
 import 'package:clean_architecture_template/core/network/network_injection_container.dart';
 import 'package:clean_architecture_template/features/test/presentation/bloc/bloc.dart';
-import 'package:clean_architecture_template/features/test/test_injection_container.dart';
+import 'package:clean_architecture_template/features/test/feature_name_injection_container.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
