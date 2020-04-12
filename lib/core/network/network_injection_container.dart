@@ -1,8 +1,5 @@
 
 
-import 'package:clean_architecture_template/core/network/basicRequest/basic_dio_request_impl.dart';
-import 'package:clean_architecture_template/core/network/basicRequest/basic_request.dart';
-
 import '../service_locator.dart';
 import 'connected/connected.dart';
 import 'connectivity/connectivity_info.dart';

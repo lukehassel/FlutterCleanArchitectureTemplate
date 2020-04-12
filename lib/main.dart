@@ -1,5 +1,5 @@
 import 'package:clean_architecture_template/core/network/network_injection_container.dart';
-import 'package:clean_architecture_template/features/test/presentation/pages/test_page.dart';
+import 'package:clean_architecture_template/features/test/presentation/pages/feature_name_page.dart';
 import 'package:clean_architecture_template/features/test/test_injection_container.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TestPage(),
+      home: FeatureNamePage(),
     );
   }
 }

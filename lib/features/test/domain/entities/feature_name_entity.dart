@@ -1,6 +1,6 @@
 
 //TODO Example Model. Replace this class with your own entity.
-class TestEntity {
+class FeatureNameEntity {
   int page;
   int perPage;
   int total;
@@ -8,7 +8,7 @@ class TestEntity {
   List<TestData> data;
   TestAd ad;
 
-  TestEntity(
+  FeatureNameEntity(
       {this.page,
         this.perPage,
         this.total,

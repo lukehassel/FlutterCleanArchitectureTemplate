@@ -1,9 +1,10 @@
+/*
 import 'package:clean_architecture_template/core/network/basicRequest/basic_dio_request_impl.dart';
 import 'package:clean_architecture_template/core/network/basicRequest/basic_request.dart';
 import 'package:clean_architecture_template/core/network/connectivity/connectivity_info.dart';
 import 'package:clean_architecture_template/core/network/connectivity/connectivity_info_impl.dart';
-import 'package:clean_architecture_template/features/test/data/datasources/test_data_source.dart';
-import 'package:clean_architecture_template/features/test/data/models/test_model.dart';
+import 'package:clean_architecture_template/features/feature_name/data/datasources/ClassNameLoweX_data_source.dart';
+import 'package:clean_architecture_template/features/feature_name/data/models/feature_name_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -28,7 +29,7 @@ void main() {
       //print(response.data.toString()+'  \n'+response.statusCode.toString());
 
 
-      TestModel model = await TestRemoteDataSourceImpl(sl()).getTest(aid: '');
+      FeatureNameModel model = await FeatureNameRemoteDataSourceImpl(sl()).getFeatureName(aid: '');
 
       print(model.ad.text);
     });
@@ -40,4 +41,4 @@ void main() {
     await Future.delayed(const Duration(seconds: 5), ()=> 'asf');
 
   }
-}
+}*/

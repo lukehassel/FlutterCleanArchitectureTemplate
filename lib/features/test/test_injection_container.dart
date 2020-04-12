@@ -1,39 +1,37 @@
-
-
-import 'package:clean_architecture_template/core/network/basicRequest/basic_dio_request_impl.dart';
-import 'package:clean_architecture_template/core/network/basicRequest/basic_request.dart';
+import 'package:clean_architecture_template/core/network/basic_request/basic_dio_request_impl.dart';
+import 'package:clean_architecture_template/core/network/basic_request/basic_request.dart';
 import 'package:clean_architecture_template/core/service_locator.dart';
+import 'package:clean_architecture_template/features/test/presentation/bloc/feature_name_bloc.dart';
 
-import 'data/datasources/test_data_source.dart';
-import 'data/repositories/test_repository_impl.dart';
-import 'domain/repositories/test_repository.dart';
-import 'domain/usecases/test_usecase.dart';
-import 'presentation/bloc/test_bloc.dart';
+import 'data/datasources/feature_name_data_source.dart';
+import 'data/repositories/feature_name_repository_impl.dart';
+import 'domain/repositories/feature_name_repository.dart';
+import 'domain/usecases/feature_name_usecase.dart';
 
 Future<void> initTest() async {
   /// Bloc
   sl.registerFactory(
         () =>
-        TestBloc(
-          getTestUseCase: sl(),
+        FeatureNameBloc(
+          getFeatureNameUseCase: sl(),
         ),
   );
 
   /// Use cases
-  sl.registerLazySingleton(() => GetTestUseCase(sl()));
+  sl.registerLazySingleton(() => GetFeatureNameUseCase(sl()));
 
   /// Repository
-  sl.registerLazySingleton<TestRepository>(
+  sl.registerLazySingleton<FeatureNameRepository>(
         () =>
-        TestRepositoryImpl(
+        FeatureNameRepositoryImpl(
           connected: sl(),
           remoteDataSource: sl(),
         ),
   );
 
   /// Data sources
-  sl.registerLazySingleton<TestRemoteDataSource>(
-        () => TestRemoteDataSourceImpl(sl()),
+  sl.registerLazySingleton<FeatureNameRemoteDataSource>(
+        () => FeatureNameRemoteDataSourceImpl(sl()),
   );
 
 

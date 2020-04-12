@@ -1,5 +1,4 @@
-import 'package:clean_architecture_template/core/network/basicRequest/basic_dio_request_impl.dart';
-import 'package:clean_architecture_template/core/network/basicRequest/basic_request.dart';
+/*
 import 'package:clean_architecture_template/core/network/connectivity/connectivity_info.dart';
 import 'package:clean_architecture_template/core/network/connectivity/connectivity_info_impl.dart';
 import 'package:clean_architecture_template/core/network/network_injection_container.dart';
@@ -17,18 +16,18 @@ void main() {
   setUp((){
     GetIt sl = GetIt.I;
     initNetworkInjectionContainer();
-    initTest();
+    initFeatureName();
   });
 
   group('Counter', () {
     test('test bloc', () async {
       GetIt sl = GetIt.I;
 
-      sl.get<TestBloc>().add(GetTestEvent(aid: '2'));
+      sl.get<TestBloc>().add(GetFeatureNameEvent(aid: '2'));
 
-      sl.get<TestBloc>().listen((state) {
+      sl.get<FeatureNameBloc>().listen((state) {
         print('state: '+state.toString());
-        if(state is TestLoadedState){
+        if(state is FeatureNameLoadedState){
           print('loaded'+state.model.data.length.toString());
         }
 
@@ -37,4 +36,4 @@ void main() {
     });
   });
 
-}
+}*/

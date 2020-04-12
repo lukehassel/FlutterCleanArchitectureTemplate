@@ -1,7 +1,5 @@
-import 'package:clean_architecture_template/core/error/exceptions.dart';
+import 'package:clean_architecture_template/core/exceptions//exceptions.dart';
 import 'package:clean_architecture_template/core/i18n/error_i18n.dart';
-
-import 'failures.dart';
 
 class MapException {
   String exceptionToMessage(Exception exception) {

@@ -1,7 +1,7 @@
-import '../../domain/entities/test_entity.dart';
+import '../../domain/entities/feature_name_entity.dart';
 
 //ToDo Example Model. Replace this class with your own model.
-class TestModel extends TestEntity{
+class FeatureNameModel extends FeatureNameEntity{
   int page;
   int perPage;
   int total;
@@ -9,7 +9,7 @@ class TestModel extends TestEntity{
   List<TestData> data;
   TestAd ad;
 
-  TestModel(
+  FeatureNameModel(
       {this.page,
         this.perPage,
         this.total,
@@ -17,7 +17,7 @@ class TestModel extends TestEntity{
         this.data,
         this.ad});
 
-  TestModel.fromJson(Map<String, dynamic> json) {
+  FeatureNameModel.fromJson(Map<String, dynamic> json) {
     page = json['page'];
     perPage = json['per_page'];
     total = json['total'];
