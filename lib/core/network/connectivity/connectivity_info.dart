@@ -5,7 +5,6 @@ import 'package:rxdart/rxdart.dart';
 
 abstract class ConnectivityInfo {
 
-
   ///This Connectivity library is implemented with dependency Injection so
   ///that this library can simply be replaced with another Connectivity
   ///library.

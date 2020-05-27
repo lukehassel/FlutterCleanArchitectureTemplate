@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:clean_architecture_template/core/exceptions/exceptions.dart';
-import 'package:clean_architecture_template/core/exceptions/map_failures.dart';
+import 'package:clean_architecture_template/core/exceptions/map_exceptions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 
@@ -26,24 +26,28 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
       print('event called');
       yield FeatureNameLoadingState();
       final failureOrModel = getFeatureNameUseCase(Params(aid: event.aid));
-      await for (var value in failureOrModel){
-        print('received value'+value.toString());
+      await for (var value in failureOrModel) {
+        print('received value' + value.toString());
         yield* _eitherLoadedOrErrorState(value);
       }
     }
   }
 
   Stream<FeatureNameState> _eitherLoadedOrErrorState(
-      Either<Exception, FeatureNameEntity> failureOrTrivia,) async* {
+    Either<Exception, FeatureNameEntity> failureOrTrivia,
+  ) async* {
     yield failureOrTrivia.fold(
-          (exception) {
-            if(exception is AccessPointNoInternetException || exception is NotConnectedToAccessPointException){
-              return FeatureNameOfflineState(message: MapException().exceptionToMessage(exception));
-            }else{
-              return FeatureNameErrorState(message: MapException().exceptionToMessage(exception));
-            }
-          },
-          (model) => FeatureNameLoadedState(model: model),
+      (exception) {
+        if (exception is AccessPointNoInternetException ||
+            exception is NotConnectedToAccessPointException) {
+          return FeatureNameOfflineState(
+              message: MapException().exceptionToMessage(exception));
+        } else {
+          return FeatureNameErrorState(
+              message: MapException().exceptionToMessage(exception));
+        }
+      },
+      (model) => FeatureNameLoadedState(model: model),
     );
   }
 }

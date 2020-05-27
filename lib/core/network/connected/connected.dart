@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 class Connected {
   final ConnectivityInfo _connectivityInfo;
 
+  ///abstraction of connectivity_info
   Connected(this._connectivityInfo);
 
   ///error: internet access point has no internet

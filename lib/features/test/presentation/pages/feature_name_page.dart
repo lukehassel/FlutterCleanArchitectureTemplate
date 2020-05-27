@@ -24,22 +24,32 @@ class _FeatureNamePageState extends State<FeatureNamePage> {
         child: BlocBuilder<FeatureNameBloc, FeatureNameState>(
           builder: (context, state) {
             if (state is FeatureNameLoadedState) {
-              return Container(
-                color: Colors.lightGreen,
-                child: Text(state.model.ad.text),
+              return GestureDetector(
+                onTap: () {
+                  BlocProvider.of<FeatureNameBloc>(context)
+                      .add(GetFeatureNameEvent(aid: '1'));
+                },
+                child: Container(
+                  height: 400,
+                  color: Colors.lightGreen,
+                  child: Text(state.model.ad.text),
+                ),
               );
             }
             if (state is FeatureNameErrorState) {
-              return Center(
-                  child: Text(state.message));
+              return Center(child: Text(state.message));
             }
-            if(state is FeatureNameOfflineState){
-              return Center(child: Container(color: Colors.purple, child: Text(state.message)),);
+            if (state is FeatureNameOfflineState) {
+              return Center(
+                child:
+                    Container(color: Colors.purple, child: Text(state.message)),
+              );
             }
             //Loading Widget
             return GestureDetector(
               onTap: () {
-                BlocProvider.of<FeatureNameBloc>(context).add(GetFeatureNameEvent(aid: '1'));
+                BlocProvider.of<FeatureNameBloc>(context)
+                    .add(GetFeatureNameEvent(aid: '1'));
               },
               child: Container(
                 color: Colors.orange,

@@ -5,14 +5,14 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '../entities/feature_name_entity.dart';
 
-class GetFeatureNameUseCase implements UseCase<FeatureNameEntity, Params> {
+class GetFeatureNameUseCase implements UseCase<FeatureNameEntity, dynamic> {
   final FeatureNameRepository repository;
 
   GetFeatureNameUseCase(this.repository);
 
   @override
-  Stream<Either<Exception, FeatureNameEntity>> call(Params params) {
-    return repository.getFeatureName(params.aid);
+  Stream<Either<Exception, FeatureNameEntity>> call(dynamic properties) {
+    return repository.getFeatureName(properties);
   }
 }
 
@@ -24,4 +24,3 @@ class Params extends Equatable {
   @override
   List<Object> get props => [aid];
 }
-

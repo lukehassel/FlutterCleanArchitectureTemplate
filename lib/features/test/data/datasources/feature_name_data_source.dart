@@ -1,21 +1,19 @@
 import 'package:clean_architecture_template/core/network/basic_request/basic_request.dart';
+import 'package:clean_architecture_template/core/remote_data_source/basic_remote_data_source.dart';
 
 import '../models/feature_name_model.dart';
 
-abstract class FeatureNameRemoteDataSource {
-
-  Future<FeatureNameModel> getFeatureName({String aid});
-
+abstract class FeatureNameRemoteDataSource implements BasicRemoteDataSource {
+  Future<FeatureNameModel> getRemoteSource({dynamic properties});
 }
 
 class FeatureNameRemoteDataSourceImpl implements FeatureNameRemoteDataSource {
-
   final BasicRequest basicRequest;
 
   FeatureNameRemoteDataSourceImpl(this.basicRequest);
 
   @override
-  Future<FeatureNameModel> getFeatureName({String aid}) async {
+  Future<FeatureNameModel> getRemoteSource({dynamic properties}) async {
     print('datasource');
     FeatureNameModel model;
 
@@ -24,8 +22,8 @@ class FeatureNameRemoteDataSourceImpl implements FeatureNameRemoteDataSource {
       //'page': aid
     };
 
-    try{
-      var response = await basicRequest.send(url: 'example.com');
+    try {
+      var response = await basicRequest.get(url: '');
       var d = response.data;
       model = FeatureNameModel.fromJson(d);
 

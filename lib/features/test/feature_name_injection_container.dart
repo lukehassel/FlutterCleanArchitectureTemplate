@@ -11,10 +11,9 @@ import 'domain/usecases/feature_name_usecase.dart';
 Future<void> initTest() async {
   /// Bloc
   sl.registerFactory(
-        () =>
-        FeatureNameBloc(
-          getFeatureNameUseCase: sl(),
-        ),
+    () => FeatureNameBloc(
+      getFeatureNameUseCase: sl(),
+    ),
   );
 
   /// Use cases
@@ -22,18 +21,14 @@ Future<void> initTest() async {
 
   /// Repository
   sl.registerLazySingleton<FeatureNameRepository>(
-        () =>
-        FeatureNameRepositoryImpl(
-          connected: sl(),
-          remoteDataSource: sl(),
-        ),
+    () => FeatureNameRepositoryImpl(
+        connected: sl(), remoteDataSource: sl(), db: sl()),
   );
 
   /// Data sources
   sl.registerLazySingleton<FeatureNameRemoteDataSource>(
-        () => FeatureNameRemoteDataSourceImpl(sl()),
+    () => FeatureNameRemoteDataSourceImpl(sl()),
   );
-
 
   /// Core
   sl.registerLazySingleton<BasicRequest>(() => BasicDioRequestImpl());
