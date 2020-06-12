@@ -1,11 +1,12 @@
 //TODO Example Model. Replace this class with your own entity.
 
 import 'package:hive/hive.dart';
+import 'package:clean_architecture_template/core/clean_utils/entity/entity_base.dart';
 
 part 'feature_name_entity.g.dart';
 
 @HiveType(typeId: 0)
-class FeatureNameEntity extends HiveObject {
+class FeatureNameEntity extends EntityBase {
   @HiveField(1)
   int page;
 
@@ -34,7 +35,7 @@ class FeatureNameEntity extends HiveObject {
 }
 
 @HiveType(typeId: 1)
-class TestData extends HiveObject {
+class TestData extends EntityBase {
   @HiveField(1)
   int id;
   @HiveField(2)
@@ -50,7 +51,7 @@ class TestData extends HiveObject {
 }
 
 @HiveType(typeId: 2)
-class TestAd extends HiveObject {
+class TestAd extends EntityBase {
   @HiveField(1)
   String company;
   @HiveField(2)

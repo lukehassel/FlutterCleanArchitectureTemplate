@@ -1,5 +1,6 @@
 import 'package:clean_architecture_template/core/exceptions//exceptions.dart';
 import 'package:clean_architecture_template/core/i18n/error_i18n.dart';
+import 'package:dio/dio.dart';
 
 class MapException {
   String exceptionToMessage(Exception exception) {
@@ -9,9 +10,9 @@ class MapException {
         return ErrorI18n().ACCESSPOINT_NOINTERNET_FAILURE;
       case NotConnectedToAccessPointException:
         return ErrorI18n().NOTCONNECTED_TOACCESSPOINT_FAILURE;
-      case DioException:
-        print('mapped dio exception' + (exception as DioException).message);
-        return (exception as DioException).message;
+      case DioError:
+        //print('mapped dio exception' + (exception as DioException).message);
+        return (exception as DioError).message;
         break;
       default:
         return exception.toString();

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:clean_architecture_template/core/clean_utils/entity/entity_base.dart';
 import 'package:clean_architecture_template/core/exceptions/exceptions.dart';
 import 'package:clean_architecture_template/core/exceptions/map_exceptions.dart';
 import 'package:dartz/dartz.dart';
@@ -25,7 +26,7 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
     if (event is GetFeatureNameEvent) {
       print('event called');
       yield FeatureNameLoadingState();
-      final failureOrModel = getFeatureNameUseCase(Params(aid: event.aid));
+      final failureOrModel = getFeatureNameUseCase(event.aid);
       await for (var value in failureOrModel) {
         print('received value' + value.toString());
         yield* _eitherLoadedOrErrorState(value);
@@ -34,7 +35,7 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
   }
 
   Stream<FeatureNameState> _eitherLoadedOrErrorState(
-    Either<Exception, FeatureNameEntity> failureOrTrivia,
+    Either<Exception, EntityBase> failureOrTrivia,
   ) async* {
     yield failureOrTrivia.fold(
       (exception) {

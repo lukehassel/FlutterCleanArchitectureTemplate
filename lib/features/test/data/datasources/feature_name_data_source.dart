@@ -1,5 +1,5 @@
+import 'package:clean_architecture_template/core/clean_utils/remote_data_source/basic_remote_data_source.dart';
 import 'package:clean_architecture_template/core/network/basic_request/basic_request.dart';
-import 'package:clean_architecture_template/core/remote_data_source/basic_remote_data_source.dart';
 
 import '../models/feature_name_model.dart';
 
