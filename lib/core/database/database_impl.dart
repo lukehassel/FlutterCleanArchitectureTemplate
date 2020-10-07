@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:clean_architecture_template/core/database/data_object.dart';
-import 'package:clean_architecture_template/features/test/data/models/feature_name_model.dart';
-import 'package:clean_architecture_template/features/test/domain/entities/feature_name_entity.dart';
+import 'package:clean_architecture_template/features/feature_name_get/data/models/feature_name_model.dart';
+import 'package:clean_architecture_template/features/feature_name_get/domain/entities/feature_name_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -27,7 +27,7 @@ class DatabaseImpl implements Database {
     } else {
       await Hive.initFlutter();
     }
-    await Hive.openBox('cache');
+    await Hive.openBox(boxName);
     deleteAll();
   }
 

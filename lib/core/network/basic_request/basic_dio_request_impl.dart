@@ -1,4 +1,4 @@
-import 'package:clean_architecture_template/core/exceptions/exceptions.dart';
+import 'package:clean_architecture_template/core/error/exceptions/exceptions.dart';
 import 'package:clean_architecture_template/core/network/basic_request/base_options.dart';
 import 'package:clean_architecture_template/core/network/basic_request/basic_request.dart';
 import 'package:dio/dio.dart';
@@ -22,6 +22,8 @@ class BasicDioRequestImpl implements BasicRequest {
           jsonMap.putIfAbsent(k, () => v);
         });
       }
+
+      print('body' + jsonMap.toString());
 
       FormData formData = new FormData.fromMap(jsonMap);
 
