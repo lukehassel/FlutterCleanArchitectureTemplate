@@ -2,5 +2,5 @@ import 'package:clean_architecture_template/core/error/failures/failure_expo.dar
 import 'package:dartz/dartz.dart';
 
 abstract class UseCase<Type, Params> {
-  Stream<Either<Failure, Type>> call(dynamic properties);
+  Stream<Either<Failure, Type>> getStream(dynamic properties);
 }

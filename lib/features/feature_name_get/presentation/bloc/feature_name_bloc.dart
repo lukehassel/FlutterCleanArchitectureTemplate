@@ -17,45 +17,15 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
     @required this.getFeatureNameUseCase,
   }) : super(FeatureNameInitialState());
 
-  /*@override
+  @override
   Stream<FeatureNameState> mapEventToState(FeatureNameEvent event) async* {
     if (event is GetFeatureNameEvent) {
       print('event called');
       yield FeatureNameLoadingState();
-      final failureOrModel = getFeatureNameUseCase(event.aid);
+      final failureOrModel = getFeatureNameUseCase.getStream(event.aid);
       await for (var value in failureOrModel) {
         print('received value' + value.toString());
         yield* _eitherLoadedOrErrorState(value);
-      }
-    }
-  }*/
-
-  /*Stream failureOrModel = new Stream.periodic(Duration(seconds: 2));
-
-  Stream<int> testStream() async* {
-    await for (var value in failureOrModel) {
-      yield 3;
-    }
-  }*/
-
-  Stream stream = new Stream.periodic(Duration(seconds: 2));
-  Stream<int> testStream() async* {
-    await for (var value in stream) {
-      yield 3;
-    }
-  }
-
-  @override
-  Stream<FeatureNameState> mapEventToState(FeatureNameEvent event) async* {
-    if (event is GetFeatureNameEvent) {
-      yield FeatureNameLoadingState();
-
-      //final Stream failureOrModel = testStream();
-      final Stream failureOrModel = getFeatureNameUseCase.getStream(event.aid);
-
-      await for (var value in failureOrModel) {
-        print('received value' + value.toString());
-        //yield* _eitherLoadedOrErrorState(value);
       }
     }
   }
@@ -79,10 +49,4 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
       (model) => FeatureNameLoadedState(model: model),
     );
   }
-
-  /*@override
-  Stream<FeatureNameState> mapEventToState(FeatureNameEvent event) {
-    // TODO: implement mapEventToState
-    throw UnimplementedError();
-  }*/
 }

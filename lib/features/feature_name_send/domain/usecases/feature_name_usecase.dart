@@ -11,7 +11,7 @@ class GetFeatureNameUseCase implements UseCase<EntityBase, dynamic> {
   GetFeatureNameUseCase(this.repository);
 
   @override
-  Stream<Either<Failure, EntityBase>> call(dynamic properties) {
+  Stream<Either<Failure, EntityBase>> getStream(dynamic properties) {
     return repository.getFeatureName(properties);
   }
 }

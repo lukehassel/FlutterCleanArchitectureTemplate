@@ -22,7 +22,8 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
     if (event is GetFeatureNameEvent) {
       print('event called');
       yield FeatureNameLoadingState();
-      final failureOrModel = getFeatureNameUseCase(event.requestEntity);
+      final failureOrModel =
+          getFeatureNameUseCase.getStream(event.requestEntity);
       print(failureOrModel.toString());
       //if (failureOrModel != null) {
       await for (var value in failureOrModel) {

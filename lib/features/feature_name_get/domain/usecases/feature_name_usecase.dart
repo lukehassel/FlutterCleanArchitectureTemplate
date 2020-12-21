@@ -5,30 +5,24 @@ import 'package:clean_architecture_template/core/error/failures/failure_expo.dar
 import '../repositories/feature_name_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetFeatureNameUseCase {
+class GetFeatureNameUseCase implements UseCase<EntityBase, dynamic> {
   final FeatureNameRepository repository;
 
   GetFeatureNameUseCase(this.repository);
 
-  //@override
+  @override
   Stream<Either<Failure, EntityBase>> getStream(dynamic properties) {
-    return repository.getFeatureName(properties);
+    final stream = repository.getFeatureName(properties);
+
+    return nextStream(stream);
   }
 }
 
-/*class GetFeatureNameUseCase {
-  final FeatureNameRepository repository;
-
-  GetFeatureNameUseCase(this.repository);
-
-  Stream<int> getStream(dynamic properties) {
-    return testStream();
-  }
-}*/
-
-Stream stream = new Stream.periodic(Duration(seconds: 2));
-Stream<int> testStream() async* {
-  await for (var value in stream) {
-    yield 3;
+Stream<Either<Failure, EntityBase>> nextStream(Stream s) async* {
+  await for (var value in s) {
+    value.fold((l) {
+      return l;
+    }, (entity) {});
+    yield value;
   }
 }
