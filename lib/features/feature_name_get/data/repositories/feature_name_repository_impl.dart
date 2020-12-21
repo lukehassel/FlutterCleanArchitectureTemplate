@@ -32,19 +32,4 @@ class FeatureNameRepositoryImpl implements FeatureNameRepository {
             connected: connected)
         .getDataSource(properties);
   }
-
-  /*Future<Either<Exception, FeatureNameEntity>> connectToServer(String aid) async {
-    try {
-      final remoteSource = await remoteDataSource.getFeatureName(aid: aid);
-
-      saveData();
-
-      print(remoteSource.data);
-
-      return Right(remoteSource);
-    } catch (e){
-      return Left(e);
-    }
-  }*/
-
 }
