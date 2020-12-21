@@ -12,6 +12,19 @@ class GetFeatureNameUseCase implements UseCase<EntityBase, dynamic> {
 
   @override
   Stream<Either<Failure, EntityBase>> getStream(dynamic properties) {
-    return repository.getFeatureName(properties);
+    final stream = repository.getFeatureName(properties);
+
+    return nextStream(stream);
   }
 }
+
+Stream<Either<Failure, EntityBase>> nextStream(Stream s) async* {
+  await for (var value in s) {
+    value.fold((l) {
+      return l;
+    }, (entity) {});
+    yield value;
+  }
+}
+
+///hkhkhkkkhhkhk test github
