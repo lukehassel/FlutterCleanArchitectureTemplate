@@ -31,7 +31,7 @@ Future<void> initFeatureName() async {
   );
 
   /// Core
-  sl.registerLazySingleton<BasicRequest>(() => BasicDioRequestImpl());
+  //sl.registerLazySingleton<BasicRequest>(() => BasicDioRequestImpl());
 
   //sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 

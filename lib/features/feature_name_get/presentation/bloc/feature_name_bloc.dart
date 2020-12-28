@@ -39,11 +39,11 @@ class FeatureNameBloc extends Bloc<FeatureNameEvent, FeatureNameState> {
         if (failure is AccessPointNoInternetFailure ||
             failure is NotConnectedToAccessPointFailure) {
           return FeatureNameOfflineState(
-              message: MapFailures().failureToMessage(failure));
+              message: MapFailures.failureToMessage(failure));
         } else {
           //else all other failures or exceptions
           return FeatureNameErrorState(
-              message: MapFailures().failureToMessage(failure));
+              message: MapFailures.failureToMessage(failure));
         }
       },
       (model) => FeatureNameLoadedState(model: model),
